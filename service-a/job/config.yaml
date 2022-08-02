@@ -6,6 +6,6 @@ actions:
     tasks:
       - name: "Run kubectl"
         image: "gardnera/kubectl:v0.0.1"
-        #serviceAccount: "jes-deploy-using-helm"
+        serviceAccount: "kubectl-runner-for-jes"
         cmd: ["kubectl"]
         args: ["get", "pods"]
