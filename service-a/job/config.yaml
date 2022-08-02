@@ -1,3 +1,13 @@
+# Requires a serviceAccount with appropriate permissions
+# My job-executor-service is running in namespace=keptn-jes
+# For example:
+# kubectl create serviceaccount kubectl-runner-for-jes -n keptn-jes
+# kubectl create clusterrolebinding kubectl-runner-cluster-admin \
+# --clusterrole=cluster-admin \
+# --serviceaccount=keptn-jes:kubectl-runner-for-jes
+#
+# WARNING: Granting cluster-admin is usually a bad idea. You should know what you're doing before blindly doing this!
+#
 apiVersion: v2
 actions:
   - name: "Run Kubectl"
@@ -8,4 +18,4 @@ actions:
         image: "gardnera/kubectl:v0.0.1"
         serviceAccount: "kubectl-runner-for-jes"
         cmd: ["kubectl"]
-        args: ["get", "pods"]
+        args: ["get", "namespaces"]
