@@ -1,0 +1,11 @@
+apiVersion: v2
+actions:
+  - name: "Run Kubectl"
+    events:
+      - name: "sh.keptn.event.hello.triggered"
+    tasks:
+      - name: "Run kubectl"
+        image: "gardnera/kubectl:v0.0.1"
+        #serviceAccount: "jes-deploy-using-helm"
+        cmd: ["kubectl"]
+        args: ["get", "pods"]
